@@ -1,0 +1,107 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+
+    <body>
+    <!-- Preloader Start -->
+    <div class="preloader"></div>
+    <!-- Preloader End -->
+
+    <!-- Service Details Section Start -->
+    <section class="blog-single-news pdt-110 pdb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="single-news-details news-wrapper mrb-30">
+                        <div class="news-thumb">
+                            {% if tib.tib_image and tib.tib_Video %}
+                                <video controls loop
+                                       style="max-width: 100%; min-width: 100%; max-height: 320px;min-height: 320px">
+                                    <source src="{{ tib.tib_Video.url }}" type="video/mp4"/>
+                                </video>
+                                {% else %}
+                                <a href="{% url 'tib_detail' tib.slug %}">
+                                    <img style="max-width: 100%; min-width: 100%; max-height: 320px;min-height: 320px"
+                                         class="img-full" src="{{ tib.tib_image.url }}" alt="">
+                                </a>
+
+                            {% endif %}
+
+                            <div class="news-top-meta">
+                                <span class="entry-category">{{ tib.name }}</span>
+                            </div>
+                        </div>
+                        <div class="single-news-content">
+                            <div class="news-bottom-meta mrt-20 mrb-10">
+                                {% for category in tib.category.all %}
+                                    <span class="entry-author"><i
+                                            class="fa fa-list-alt mrr-10 text-primary-color"></i>{{ category.tibCategory }}</span>
+                                {% endfor %}
+
+
+                                <span class="entry-date"><i class="far fa-calendar-alt mrr-10 text-primary-color"></i>{{ tib.publicatetime }}</span>
+                            </div>
+
+                            <div class="entry-content">
+                                <p>{{ tib.description }}</p>
+                            </div>
+                            <div class="single-news-tag-social-area clearfix">
+
+                                <div class="single-news-share text-left text-xl-right">
+                                    <h5 class="mrb-15">Social Share:</h5>
+                                    <ul class="social-icons">
+                                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            <div class="col-xl-4 col-lg-5 sidebar-right">
+					<div class="service-nav-menu mrb-30">
+						<div class="service-link-list mb-30">
+							<ul class="">
+								<li><a href="{% url 'tib' %}"><i class="fa fa-chevron-left"></i>Go Back</a></li>
+
+							</ul>
+						</div>
+					</div>
+
+					<div class="sidebar-widget bg-gradient-color text-center" data-background="images/bg/abs-bg4.png">
+						<div class="contact-information">
+							<h3 class="text-white mrb-20">Contact Us</h3>
+							<p class="text-white">If you have any question about our service please contact with us</p>
+							<ul class="list-items text-white mrb-20">
+								<li><span class="fas fa-phone alt mrr-10 text-white"></span>5380000000</li>
+								<li><span class="fas fa-map mrr-10 text-white"></span>34 istanbul, Turkey</li>
+								<li><span class="fas fa-envelope mrr-10 text-white"></span>example@gmail.com</li>
+							</ul>
+							<a href="#" class="cs-btn-one btn-light mrt-15">Contact Us</a>
+						</div>
+					</div>
+				</div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+
+    </body>
+
+
+{% endblock %}

@@ -26,7 +26,7 @@ class TibCategory(models.Model):
 
 class Tib(models.Model):
     name                    = models.CharField(max_length=200, blank=True, null=True)
-    category                = models.ForeignKey(TibCategory, on_delete=models.CASCADE, related_name='Tib_Category')
+    category                = models.ManyToManyField(TibCategory)
     tib_image               = models.ImageField(upload_to='tib_image/', blank=True, null=True)
     tib_Video               = models.FileField(upload_to='tib_Video/', blank=True, null=True)
     description             = models.TextField()

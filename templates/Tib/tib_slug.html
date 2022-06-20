@@ -1,0 +1,128 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+    <body>
+    <!-- Preloader Start -->
+    <div class="preloader"></div>
+
+
+    <!-- Service Details Section Start -->
+    <div class="service-details-page pdt-110 pdb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="row">
+
+                        {% for tib in tibs %}
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="feature-box mrb-lg-60">
+                                    <div class="feature-thumb">
+                                        <a href="{% url 'tib_detail' tib.slug %}"> <img
+                                                style="max-width: 100%; min-width: 100%; max-height: 320px;min-height: 320px"
+                                                class="img-full" src="{{ tib.tib_image.url }}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="feature-content">
+                                        <div class="title">
+                                            <h3>{{ tib.name }}</h3>
+                                        </div>
+                                        <div class="para">
+                                            <p>{{ tib.description|truncatewords:30 }}</p>
+                                        </div>
+                                        <div class="link">
+                                            <a href="{% url 'tib_detail' tib.slug %}"><i
+                                                    class="fas fa-long-arrow-alt-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <nav class="pagination-nav pdt-30">
+                                <ul class="pagination-list">
+                                    {% if tibs.has_previous %}
+                                        <li class="pagination-left-arrow"><a
+                                                href="?page={{ tibs.previous_page_number }}"><i
+                                                class="fa fa-angle-left"></i></a>
+                                        </li>
+                                    {% endif %}
+
+                                    <li><a href="#">{{ tibs.number }}</a></li>
+
+                                    {% if tibs.has_next %}
+                                        <li class="pagination-right-arrow"><a
+                                                href="?page={{ tibs.next_page_number }}"><i
+                                                class="fa fa-angle-right"></i></a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-xl-4 col-lg-5 sidebar-right">
+                    <div class="service-nav-menu mrb-30">
+                        <div class="service-link-list mb-30">
+                            <ul class="">
+                                {% for tib in categories %}
+
+                                    <li><a href="{% url 'tib_view_with_category' tib.slug %}"><i
+                                            class="fa fa-chevron-right"></i>{{ tib.tibCategory }}</a></li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget bg-gradient-color text-center"
+                         data-background="images/bg/abs-bg4.png">
+                        <div class="contact-information">
+                            <h3 class="text-white mrb-20">Contact Us</h3>
+                            <p class="text-white">If you have any question about our service please contact with
+                                us</p>
+                            <ul class="list-items text-white mrb-20">
+                                <li><span class="fas fa-phone alt mrr-10 text-white"></span>5380000000</li>
+                                <li><span class="fas fa-map mrr-10 text-white"></span>34 istanbul, Turkey</li>
+                                <li><span class="fas fa-envelope mrr-10 text-white"></span>example@gmail.com</li>
+                            </ul>
+                            <a href="#" class="cs-btn-one btn-light mrt-15">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
