@@ -1,0 +1,413 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block content %}
+    <body>
+
+    <!-- Preloader Start -->
+    <div class="preloader"></div>
+
+    <section class="banner-section">
+    <div class="home-carousel owl-theme owl-carousel">
+        <div class="slide-item">
+            <div class="image-layer">
+                <img src="{% static 'images/jobs.jpg' %}" alt="">
+            </div>
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-xl-8 col-lg-12 col-md-12 content-column">
+                        <div class="content-box">
+                            <h1>Join Our Activities & <br> Power Your Imagination</h1>
+                            <p>Increase your coding ability & Make Friends<br> always achieve success in your life
+                            </p>
+                            <div class="btn-box">
+                                <a href="#" class="cs-btn-one btn-gradient-color">Get a Activity</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-item">
+            <div class="image-layer">
+                <img src="{% static 'images/bg/code.jpg' %}" alt="">
+            </div>
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-xl-8 col-lg-12 col-md-12 content-column">
+                        <div class="content-box">
+                            <h1>Join Our Activities & <br> Power Your Imagination</h1>
+                            <p>Increase your coding ability & Make Friends<br> always achieve success in your life
+                            </p>
+                            <div class="btn-box">
+                                <a href="#" class="cs-btn-one btn-gradient-color">Get a Activity</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-item">
+            <div class="image-layer">
+                <img src="{% static 'images/robot.jpg' %}" alt="">
+            </div>
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-xl-8 col-lg-12 col-md-12 content-column">
+                        <div class="content-box">
+                            <h1>Join Our Activities & <br> Power Your Imagination</h1>
+                            <p>Increase your coding ability & Make Friends<br> always achieve success in your life
+                            </p>
+                            <div class="btn-box">
+                                <a href="#" class="cs-btn-one btn-gradient-color">Get a Activity</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+    <section class="bg-silver-light pdt-105 pdb-80" data-background="images/bg/abs-bg4.png">
+        <div class="section-title mrb-30 mrb-md-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-xl-6">
+                        <h5 class="mrb-15 text-primary-color sub-title-side-line">Activities</h5>
+                        <h2 class="mrb-30">Let's Checkout our All Latest Activities</h2>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+
+                    {% if selected_activities|length > 0 %}
+                            {% for activity in selected_activities %}
+                                <div class="col-lg-12 col-xl-4">
+                                    <div class="news-wrapper mrb-30 mrb-sm-40">
+                                        <div class="news-thumb">
+                                            <a href="{% url 'activity' %}">
+                                                <img style="max-width: 100%; min-width: 100%; max-height: 250px; min-height: 250px"
+                                                     class="img-full" src="{{ activity.activity_image.url }}" alt="">
+                                            </a>
+
+                                            {% for activity in activity.org_name.all %}
+                                                <div class="news-top-meta">
+                                                    <a href="{% url 'organizations' %}"><span class="entry-category">{{ activity.org_name }}</span></a>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        <div class="news-details">
+                                            <div class="news-description mb-20">
+                                                <h4 class="the-title mrb-30"><a
+                                                        href="{% url 'activity' %}">{{ activity.activity_name }}</a>
+                                                </h4>
+                                                <div class="news-bottom-meta">
+                                                <span class="entry-date mrr-20"><i
+                                                        class="far fa-calendar-alt mrr-10 text-primary-color"></i>{{ activity.starttime }}</span><br>
+
+
+                                                </div>
+
+                                                <div class="news-bottom-meta">
+                                                <span class="entry-date mrr-20"><i
+                                                        class="far fa-calendar-alt mrr-10 text-primary-color"></i>{{ activity.Is_Past }}</span>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+
+
+                        {% else %}
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="news-wrapper mrb-30 mrb-sm-40">
+                                    <div class="alert alert-danger">there are no Articles</div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Section Start -->
+
+    <!-- Feature Section End -->
+    <!-- About Section Start -->
+    <section class="about-section pdt-80 pdb-20 pdb-lg-20">
+        <div class="container">
+            <div class="row mrt-40 mrt-lg-50">
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="funfact mrb-lg-30 mrb-60">
+                        <div class="icon">
+                            <img src="{% static 'images/icons/activities.png' %}" alt="">
+                        </div>
+                        <h2 class="counter">{{ activities.count }}</h2>
+                        <h5 class="title">All Activities</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="funfact mrb-lg-30 mrb-60">
+                        <div class="icon">
+                            <img src="{% static 'images/icons/participans.png' %}" alt="">
+                        </div>
+                        <h2 class="counter">{{ participants.count }}</h2>
+                        <h5 class="title">All Participants</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="funfact mrb-lg-30 mrb-60">
+                        <div class="icon">
+                            <img src="{% static 'images/icons/hosts.png' %}" alt="">
+                        </div>
+                        <h2 class="counter">{{ hosts.count }}</h2>
+                        <h5 class="title">All Hosts</h5>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3">
+                    <div class="funfact mrb-lg-30 mrb-60">
+                        <div class="icon">
+                            <img src="{% static 'images/icons/organizations.png' %}" alt="">
+                        </div>
+                        <h2 class="counter">{{ organizations.count }}</h2>
+                        <h5 class="title">All Organizations</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Team Section Titile Start -->
+    <section class="pdt-110 pdb-150 section-white-typo" data-background="images/bg/5.jpg" data-overlay-dark="8">
+        <div class="section-title text-center wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="section-title-block">
+                            <h5 class="text-primary-color anim-box-objects line-both-side mrb-15">Meet Our Team</h5>
+                            <h2>We Have Many Working Teams</h2>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Team Section Titile End -->
+    <!-- Team Section Start -->
+    <section class="pdt-0 pdb-210 pdb-md-110 minus-mrt-130 bg-pos-center-bottom"
+             data-background="images/bg/abs-bg1.png">
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+
+
+{#                    {% for selected_host in selected_hosts %}#}
+                        <div class="col-md-6 col-lg-6 col-xl-4">
+                        <div class="team-block mrb-30">
+                            <div class="team-upper-part">
+                                <a href="$">
+                                <img style="max-width: 100%; min-width: 100%; max-height: 250px; min-height: 250px" class="img-full" src="{{ selected_host.host_image.url }}" alt="">
+                                </a>
+                            </div>
+                            <div class="team-bottom-part">
+                                <h4 class="team-title mrb-5"><a href="#">{{ selected_host.host_name }}</a></h4>
+                                <h6 class="designation">{{ selected_host.position }}</h6>
+                            </div>
+                        </div>
+                    </div>
+
+{#                    {% endfor %}#}
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Team Section End -->
+    <!-- Divider Section Start -->
+    <section class="pdb-110" data-background="images/bg/3.jpg" data-overlay-dark="8">
+        <div class="section-content">
+            <div class="container">
+
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="popup-video-block video-popup">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12045.04071446829!2d39.7712184!3d40.9976782!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7abdf48cd6c81000!2sKaradeniz%20Technical%20University!5e0!3m2!1sen!2str!4v1648981743814!5m2!1sen!2str"
+                                    width="600" height="600" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                        <div class="request-a-call-back-form">
+                            <h3 id="git" class="mrt-0 mrb-20 solid-bottom-line">Feel Free to Contact Us</h3>
+                            <p class="mrb-30">Distinctively exploit optimal alignments for intuitive coordinate business
+                                applications technologies</p>
+{#                            <form action="{% url 'contactview' %}" method="post">#}
+                            <form action="#" method="post">
+                                        {% csrf_token %}
+
+                                        <div class="row">
+
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="text" name="name" required placeholder="Name"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="text" name="surname" required placeholder="SurName"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="tel" name="phone" required placeholder="Phone"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <input type="email" name="email" required placeholder="Email"
+                                                           class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-group btn-block">
+                                                    <textarea rows="8" name="description" required placeholder="Messages"
+                                                              class="form-control"></textarea>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-lg-12">
+                                                <div class=" mrb-0">
+                                                    <button type="submit" class="cs-btn-one btn-primary-color btn-sm btn-block">
+                                                        Send Post
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Divider Section End -->
+    <!-- Case Study Section Start -->
+
+    <!-- Case Study Section End -->
+    <!-- Clients Section Start -->
+    <section class="pdt-60 pdb-90">
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Clients Section End -->
+    <!-- News Section Start -->
+
+    <!-- News Section End -->
+
+
+    <!-- Testimonials Section Start -->
+    <section class="request-a-call-back pdt-80 pdb-110 pdb-lg-70" data-background="images/bg/abs-bg7.png">
+        <div class="section-title text-center wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
+            <div class="container">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-lg-8">
+                        <div class="title-box-center">
+
+                            <h5 class="sub-title-center text-primary-color line-top-center mrb-30">Organizationsb</h5>
+                            <h2 class="title">We would like to thank all the sectors that contributed to us.</h2>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+                    <div class="owl-carousel testimonial-items-2col mrb-lg-40">
+{#                        {% for organization in organizations %}#}
+                            <div class="testimonial-item">
+                                <span class="quote-icon fas fa-quote-right"></span>
+                                <div class="testimonial-thumb">
+                                    <a href="#"><img style="max-width: 100%; min-width: 100%; max-height: 150px; min-height: 150px"
+                                         src="{{ organization.org_image.url }}" alt=""></a>
+                                </div>
+                                <a href="#"><h4 class="client-name" style="color: #0c59db">{{ organization.org_name }}</h4></a>
+                                <h6 class="client-designation" style="color: #4b75bd">{{ organization.authorized }}</h6>
+                                <div class="testimonial-content">
+                                    <p class="comments">{{ organization.org_description|truncatechars:300 }}</p>
+                                </div>
+                            </div>
+
+{#                        {% endfor %}#}
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section End -->
+
+
+    </body>
+{% endblock %}
+
+
+
+
+

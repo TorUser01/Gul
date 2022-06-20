@@ -1,0 +1,138 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+    <body>
+    <!-- Preloader Start -->
+    <div class="preloader"></div>
+
+
+    <!-- Service Details Section Start -->
+    <div class="service-details-page pdt-110 pdb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="row">
+
+                        {% for maarip in maarips %}
+                            <div class="col-lg-12 col-xl-6">
+                                <div class="news-wrapper mrb-30 mrb-sm-40">
+                                    <div class="news-thumb">
+
+                                        {% if maarip.maarip_image %}
+                                            <a href="{% url 'maarip_detail' maarip.slug %}">
+                                                <img style="max-width: 100%; min-width: 100%; max-height: 320px;min-height: 320px"
+                                                     class="img-full" src="{{ maarip.maarip_image.url }}" alt="">
+                                            </a>
+                                        {% endif %}
+
+
+                                        <div class="news-top-meta">
+                                            <a href="{% url 'maarip_detail' maarip.slug %}"><span
+                                                    class="entry-category">{{ maarip.name }}</span></a>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="news-details">
+                                        <div class="news-description mb-20">
+                                            <h4 class="the-title mrb-30"><a
+                                                    href="{% url 'maarip_detail' maarip.slug %}">{{ maarip.description|truncatechars:30 }}</a>
+                                            </h4>
+                                            <div class="news-bottom-meta">
+                                                <span class="entry-date mrr-20"><i
+                                                        class="far fa-calendar-alt mrr-10 text-primary-color"></i>{{ maarip.publicatetime|date }}</span>
+
+
+                                                {% for category in maarip.category.all %}
+                                                    <span class="entry-author"><i
+                                                            class="fa fa-list-alt mrr-10 text-primary-color"></i>{{ category.maaripCategory }}</span>
+                                                {% endfor %}
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <nav class="pagination-nav pdt-30">
+                                <ul class="pagination-list">
+                                    {% if maarips.has_previous %}
+                                        <li class="pagination-left-arrow"><a
+                                                href="?page={{ maarips.previous_page_number }}"><i
+                                                class="fa fa-angle-left"></i></a>
+                                        </li>
+                                    {% endif %}
+
+                                    <li><a href="#">{{ maarips.number }}</a></li>
+
+                                    {% if maarips.has_next %}
+                                        <li class="pagination-right-arrow"><a
+                                                href="?page={{ maarips.next_page_number }}"><i
+                                                class="fa fa-angle-right"></i></a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-xl-4 col-lg-5 sidebar-right">
+                    <aside class="news-sidebar-widget">
+                        <div class="widget sidebar-widget widget-search mrb-30">
+                            <form class="search-form">
+                                <label>
+                                    <input type="search" name="keyword" class="search-field" placeholder="Search...">
+                                </label>
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+
+
+                        <div class="widget sidebar-widget widget-categories">
+                            <h4 class="mrb-30 single-blog-widget-title">Categories</h4>
+                            <ul class="list">
+
+                                {% for category in categories %}
+
+                                    <li>
+                                        <i class="fas fa-caret-right vertical-align-middle text-primary-color mrr-10"></i><a
+                                            href="{% url 'maarip_view_with_category' category.slug %}">{{ category.maaripCategory|title }}</a><span
+                                            class="f-right"></span></li>
+                                {% endfor %}
+
+
+                            </ul>
+                        </div>
+
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </body>
+
+
+
+
+
+
+
+{% endblock %}

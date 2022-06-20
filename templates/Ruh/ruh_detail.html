@@ -1,0 +1,103 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <body>
+    <div class="preloader"></div>
+
+    <section class="service-details-page pdt-50 pdb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+
+                    <div class="service-detail-text">
+                        <h3 class="mrb-20">{{ ruh.name }}</h3>
+                        <p class="mrb-40">{{ ruh.description }}</p>
+                        <div class="blog-standared-img slider-blog mrb-35">
+                            <img style="max-width: 100%; min-width: 100%; max-height: 320px;min-height: 320px"
+                                 class="img-full" src="{{ ruh.ruh_image1.url }}" alt="">
+                        </div>
+
+                        <div class="service-details-content">
+                            <div class="row d-flex mrb-40">
+                                <div class="col-lg-12 col-xl-6">
+                                    {% if ruh.ruh_Video %}
+                                        <video controls loop
+                                               style="max-width: 100%; min-width: 100%; max-height: 320px;min-height: 320px">
+                                            <source src="{{ ruh.ruh_Video.url }}" type="video/mp4"/>
+                                        </video>
+                                    {% endif %}
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                    <h3 class="mrb-20">{{ ruh.title }}</h3>
+
+                                    <div class="service-features-item d-flex mrb-20">
+
+                                        <div class="service-features-details">
+
+                                            <p class="mrb-0">{{ ruh.subject }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row d-flex mrb-40">
+                                <div class="col-lg-12 col-xl-6">
+                                    <h3 class="mrb-20">What to watch out for</h3>
+                                    <ul class="order-list primary-color mrb-lg-40">
+                                        <li>{{ ruh.solution1 }}</li>
+                                        <li>{{ ruh.solution2 }}</li>
+                                        <li>{{ ruh.solution3 }}</li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                    <img class="img-full" src="{{ ruh.ruh_image2.url }}" alt="">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-xl-4 col-lg-5 sidebar-right">
+                    <div class="service-nav-menu mrb-30">
+                        <div class="service-link-list mb-30">
+                            <ul class="">
+
+
+                                <li><a href="{% url 'ruh' %}"><i
+                                        class="fa fa-chevron-left"></i>Go Back</a></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-widget bg-gradient-color text-center" data-background="images/bg/abs-bg4.png">
+                        <div class="contact-information">
+                            <h3 class="text-white mrb-20">Contact Us</h3>
+                            <p class="text-white">If you have any question about our service please contact with us</p>
+                            <ul class="list-items text-white mrb-20">
+                                <li><span class="fas fa-phone alt mrr-10 text-white"></span>5380000000</li>
+                                <li><span class="fas fa-map mrr-10 text-white"></span>34 istanbul, Turkey</li>
+                                <li><span class="fas fa-envelope mrr-10 text-white"></span>example@gmail.com</li>
+                            </ul>
+                            <a href="#" class="cs-btn-one btn-light mrt-15">Contact Us</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    </body>
+
+
+{% endblock %}

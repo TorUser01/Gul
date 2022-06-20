@@ -1,0 +1,67 @@
+{% extends 'Home/base.html' %}
+{% load static %}
+{% block content %}
+
+    <body>
+    <div class="preloader"></div>
+
+    <!-- Project Section Start -->
+    <section class="bg-silver-light pdt-105 pdb-80" data-background="images/bg/abs-bg4.png">
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+
+
+                    {% for family in families %}
+                        <div class="col-md-6 col-lg-6 col-xl-4">
+                            <div class="case-study-item mrb-30">
+                                <div class="case-study-thumb">
+
+                                    {% if family.aile_image %}
+                                        <a href="{% url 'aile_detail' family.slug %}">
+                                            <img style="max-width: 100%; min-width: 100%; max-height: 320px;min-height: 320px"
+                                                 class="img-full" src="{{ family.aile_image.url }}" alt="">
+                                        </a>
+                                    {% endif %}
+
+
+{#                                    {% if family.aile_Video %}#}
+{#                                        <a href="{% url 'aile_detail' family.slug %}">#}
+{#                                            <img style="max-width: 100%; min-width: 100%; max-height: 320px;min-height: 320px"#}
+{#                                                 class="img-full" src="{{ family.aile_image.url }}" alt="">#}
+{#                                        </a>#}
+{#                                    {% endif %}#}
+
+
+
+
+
+
+                                    <div class="case-study-link-icon">
+                                        <a href="{% url 'aile_detail' family.slug %}"><i
+                                                class="webex-icon-attachment1"></i></a>
+                                    </div>
+                                    <div class="case-study-details p-4">
+                                        <a href="{% url 'aile_detail' family.slug %}"><h6
+                                                class="case-study-title">{{ family.category }}</h6></a>
+                                        <a href="{% url 'aile_detail' family.slug %}"><h4
+                                                class="case-study-category side-line mrb-5">{{ family.name }}</h4></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Project Section End -->
+
+
+    </body>
+
+
+{% endblock %}
