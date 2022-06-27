@@ -82,35 +82,35 @@
                         </div>
 
 
-                            <div class="main-menu f-right degistirecem">
+                        <div class="main-menu f-right degistirecem">
 
 
-                                <nav id="mobile-menu-right">
-                                    <ul class="menu">
-                                        <li><a href="{% url 'index' %}">Home</a></li>
+                            <nav id="mobile-menu-right">
+                                <ul class="menu">
+                                    <li><a href="{% url 'index' %}">باشبەت</a></li>
 
-                                        <li><a href="{% url 'tib' %}">Tib</a></li>
-                                        <li><a href="{% url 'ruh' %}">Ruh</a></li>
-                                        <li><a href="{% url 'aile' %}">Aile</a></li>
-                                        <li><a href="{% url 'maarip' %}">Maarip</a></li>
-                                        <li><a href="{% url 'contactView' %}">Contact Us</a></li>
-
-
-{#                                        <li class=" right-view">#}
-{#                                            <a href="#">Maarip</a>#}
-{#                                            <ul class="sub-menu" style="border-radius: 35px">#}
-{#                                                {% for category in categories %}#}
-{#                                                    <li ><a href="{% url 'maarip_view_with_category' category.slug %}">{{ category.maaripCategory}}</a></li>#}
-{#                                                {% endfor %}#}
-{##}
-{#                                            </ul>#}
-{#                                        </li>#}
+                                    <li><a href="{% url 'tib' %}">Tib</a></li>
+                                    <li><a href="{% url 'ruh' %}">Ruh</a></li>
+                                    <li><a href="{% url 'aile' %}">Aile</a></li>
+                                    <li><a href="{% url 'maarip' %}">Maarip</a></li>
+                                    <li><a href="{% url 'contactView' %}">Contact Us</a></li>
 
 
-                                    </ul>
-                                </nav>
+                                    {#                                        <li class=" right-view">#}
+                                    {#                                            <a href="#">Maarip</a>#}
+                                    {#                                            <ul class="sub-menu" style="border-radius: 35px">#}
+                                    {#                                                {% for category in categories %}#}
+                                    {#                                                    <li ><a href="{% url 'maarip_view_with_category' category.slug %}">{{ category.maaripCategory}}</a></li>#}
+                                    {#                                                {% endfor %}#}
+                                    {##}
+                                    {#                                            </ul>#}
+                                    {#                                        </li>#}
 
-                            </div>
+
+                                </ul>
+                            </nav>
+
+                        </div>
 
                     </div>
                 </div>
@@ -167,14 +167,13 @@
                         <div>
                             <h5 class="widget-title text-white mrb-30">Useful Links</h5>
                             <ul class="footer-widget-list">
-                                <li><a href="#">Home</a></li>
+                                <li><a href="{% url 'index' %}">Home</a></li>
 
-                                <li><a href="#">Organization</a></li>
-                                <li><a href="#">Activities</a></li>
-                                <li><a href="#">Hosts</a></li>
-                                <li><a href="#">Participant</a></li>
-
-                                <li><a href="#">Certificate</a></li>
+                                <li><a href="{% url 'tib' %}">Tib</a></li>
+                                <li><a href="{% url 'ruh' %}">Ruh</a></li>
+                                <li><a href="{% url 'aile' %}">Aile</a></li>
+                                <li><a href="{% url 'maarip' %}">Maarip</a></li>
+                                <li><a href="{% url 'contactView' %}">Contact Us</a></li>
 
 
                             </ul>
